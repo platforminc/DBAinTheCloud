@@ -69,7 +69,7 @@ resource "azurerm_subnet" "sn1" {
   name                      = "${var.prefix}-sn"
   resource_group_name       = "${azurerm_resource_group.rg1.name}"
   virtual_network_name      = "${azurerm_virtual_network.vn1.name}"
-  address_prefix            = "10.10.10.0/24"
+  address_prefixes            = ["10.10.10.0/24"]
 }
 
 ## network public ip
