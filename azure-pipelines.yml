@@ -17,13 +17,13 @@ steps:
     Contents: '**.tf'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-# - task: ArchiveFiles@1
-#   inputs:
-#     rootFolder: '01-sql-server-basic'
-#     includeRootFolder: true
-#     archiveType: 'zip'
-#     archiveFile: '$(Build.ArtifactStagingDirectory)/dm2-$(Build.BuildId).zip'
-#     replaceExistingArchive: true
+- task: ArchiveFiles@1
+  inputs:
+    rootFolder: '01-sql-server-basic'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/dm2-$(Build.BuildId).zip'
+    replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
