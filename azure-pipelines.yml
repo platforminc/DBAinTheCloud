@@ -14,7 +14,7 @@ steps:
   displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
   inputs:
     SourceFolder: '01-sql-server-basic'
-    Contents: '**.tf'
+    Contents: '**.*'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: ArchiveFiles@1
