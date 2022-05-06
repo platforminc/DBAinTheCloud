@@ -10,16 +10,28 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: ArchiveFiles@1
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
   inputs:
-    rootFolder: 'sql-server-basic-2.0'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/dm2-$(Build.BuildId).zip'
-    replaceExistingArchive: true
+    SourceFolder: 'app-service-and-sql-database-var'
+    Contents: '**.tf'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/dm2-$(Build.BuildId).zip'
-    ArtifactName: 'dm2'
-    publishLocation: 'Container'
+  displayName: 'Publish Artifact: drop'
+
+
+# steps:
+# - task: ArchiveFiles@1
+#   inputs:
+#     rootFolder: 'sql-server-basic-2.0'
+#     includeRootFolder: true
+#     archiveType: 'zip'
+#     archiveFile: '$(Build.ArtifactStagingDirectory)/dm2-$(Build.BuildId).zip'
+#     replaceExistingArchive: true
+
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#     PathtoPublish: '$(Build.ArtifactStagingDirectory)/dm2-$(Build.BuildId).zip'
+#     ArtifactName: 'dm2'
+#     publishLocation: 'Container'
